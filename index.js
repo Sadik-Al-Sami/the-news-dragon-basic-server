@@ -5,6 +5,7 @@ const categories = require('./data/categories.json');
 const news = require('./data/news.json');
 
 app.use(cors());
+// ! this next allowCors is used to pass the cors test
 const allowCors = (fn) => async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
