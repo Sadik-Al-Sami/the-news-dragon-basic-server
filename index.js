@@ -1,29 +1,29 @@
 const express = require('express');
-var cors = require('cors');
+const app = express();
+const cors = require('cors');
 const categories = require('./data/categories.json');
 const news = require('./data/news.json');
-const app = express();
-const port = process.env.PORT || 5000;
 
 app.use(cors());
-
+const port = process.env.PORT || 5000;
 app.get('/', (req, res) => {
-  res.send('Dragon is alive');
+  res.send('Dragon is running');
 });
+
 app.get('/categories', (req, res) => {
   res.send(categories);
 });
-//! Gets all news
+
 app.get('/news', (req, res) => {
   res.send(news);
 });
-//! Gets a specific news
+
 app.get('/news/:id', (req, res) => {
-  id = req.params.id;
-  const selectedNews = news.find((singleNews) => singleNews._id === id);
+  const id = req.params.id;
+  const selectedNews = news.find((n) => n._id === id);
   res.send(selectedNews);
 });
-//! Gets news by id
+
 app.get('/categories/:id', (req, res) => {
   const id = parseInt(req.params.id);
   if (id === 0) {
